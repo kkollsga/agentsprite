@@ -1,0 +1,41 @@
+name = "tiles"
+
+[layers.base]
+"a" = { role = "air", color = "#88c8f8" }
+"b" = { role = "c_b", color = "#f8f8f8" }
+"c" = { role = "c_c", color = "#183058" }
+"d" = { role = "c_d", color = "#28a048" }
+"e" = { role = "c_e", color = "#80e060" }
+"f" = { role = "c_f", color = "#386818" }
+"g" = { role = "c_g", color = "#a86830" }
+"h" = { role = "c_h", color = "#704018" }
+"i" = { role = "c_i", color = "#d8a060" }
+"j" = { role = "c_j", color = "#808890" }
+"k" = { role = "c_k", color = "#505860" }
+"l" = { role = "c_l", color = "#c0c8d0" }
+"m" = { role = "c_m", color = "#2060c8" }
+"n" = { role = "c_n", color = "#60a0f8" }
+"o" = { role = "c_o", color = "#a8d8f8" }
+"p" = { role = "c_p", color = "#c88820" }
+"q" = { role = "c_q", color = "#f8d848" }
+"r" = { role = "c_r", color = "#f8a090" }
+"s" = { role = "c_s", color = "#c83030" }
+"t" = { role = "c_t", color = "#701818" }
+"u" = { role = "c_u", color = "#303030" }
+"v" = { role = "c_v", color = "#a0a0a0" }
+"w" = { role = "c_w", color = "#e8e8e8" }
+"x" = { role = "c_x", color = "#885088" }
+"y" = { role = "c_y", color = "#d0a8d0" }
+
+[tiles]
+air = ["a"]
+
+[palettes]
+sky = "abcd"
+grass = "aefg"
+dirt = "ahij"
+rock = "aklm"
+water = "anop"
+wood = "aqrs"
+metal = "atuv"
+misc = "awxy"

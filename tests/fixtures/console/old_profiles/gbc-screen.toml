@@ -1,0 +1,11 @@
+# Full screens: same limits as gbc-tile, fixed size. A 20x18 tile screen has no unique-tile limit (360 cells).
+tile = [8, 8]
+colors_per_tile = 4
+palettes = 8
+transparent = false
+unique_tiles_max = 360
+pattern_unique = true
+dedupe_flips = true
+sheet_width = 128
+channel_step = 8
+size = [160, 144]

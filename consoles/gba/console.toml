@@ -1,0 +1,50 @@
+# Game Boy Advance (PPU). A project may override any key from disk.
+colour_bits = 5
+channel_step = 8         # BGR555, as the Game Boy Color
+export_palette = "gba"
+
+tile = [8, 8]
+hw_cell = [8, 8]         # the tile grid; a sprite is one of the 12 OBJ shapes
+sprite_size_mode = "variable"
+# 4bpp: 16 palettes x 15 + transparent (the default here). 8bpp is one palette of 255: set `colors = 255` and `obj_palettes = 1`
+# in consoles/gba/sprite.toml.
+sprite_sizes = [[8, 8], [16, 16], [32, 32], [64, 64], [16, 8], [32, 8], [32, 16], [64, 32], [8, 16], [8, 32], [16, 32], [32, 64]]
+hw_cells_max = 128       # OAM: 128 OBJs
+hw_cells_per_row_max = 128
+# The per-line limit is a cycle budget: 1210 (304*4-6), or 954 (240*4-6) with H-Blank Interval Free. A normal OBJ n pixels wide costs
+# n cycles (rotation/scaling OBJs 2n+10, not modelled), so the budget is a sprite pixel limit per scanline.
+hw_pixels_per_line_max = 1210
+palettes = 16            # BG palettes of 16 colours (4bpp)
+obj_palettes = 16        # 16 sprite palettes of 16 (entry 0 transparent)
+colors = 15
+colors_per_tile = 16
+vram_banks = 1
+vram_tiles_per_bank = 3072 # 96 KB of VRAM / 32 bytes (derived)
+obj_tiles_max = 1024      # OBJ VRAM 32 KB = 1024 4bpp tiles (512 in the bitmap modes 3-5)
+bg_tiles_max = 2048       # 64 KB of BG VRAM / 32 bytes (derived)
+sprite_cells = 512        # a ceiling; streaming budgets are not modelled (R6)
+window_tiles = 0
+dma_bytes_per_frame = 0   # not modelled
+vram_share = false
+dedupe_flips = true       # tile map entries have flip bits
+sheet_width = 128
+auto_template = "flat"
+
+[style]
+# design-language hints read by skills, the automatic first version and the quality harness; a project [style] overrides them
+white = "highlights"
+outline = "darkest"
+min_value_spread = 0.7
+value_map = "colour"
+reason = "GBA has 5 bits per channel and 15 colours per palette: full ramps per material, white only for highlights and eyes."
+
+[console]
+name = "Game Boy Advance"
+short = "GBA"
+screen = [240, 160]
+preview_bg = "#000000"
+colour = "32768 colours, 15-bit BGR555 (5 bits per channel)"
+palettes = "4bpp: 16 sprite palettes of 16 colours (entry 0 transparent); 8bpp: one palette of 256"
+oam = "128 OBJs, 12 shapes from 8x8 to 64x64; per scanline a cycle budget of 1210 (954 with H-Blank Interval Free), n cycles for an OBJ n pixels wide"
+vram = "OBJ VRAM 32 KB = 1024 4bpp tiles in BG modes 0-2 (16 KB in bitmap modes)"
+references = ["GBATEK LCD OBJ (problemkaputt.de/gbatek.htm): up to 128 OBJs of up to 64x64; the 12 size/shape combinations (square 8/16/32/64, horizontal 16x8 32x8 32x16 64x32, vertical 8x16 8x32 16x32 32x64); 4bpp = 16 palettes of 16, 8bpp = 256 colours; 15-bit colour; OBJ VRAM 06010000-06017FFF (32 KB, 16 KB in modes 3-5)", "GBATEK rendering budget: 1210 (=304*4-6) cycles, 954 (=240*4-6) with the H-Blank Interval Free bit; a normal OBJ costs n cycles for n pixels, a rotation/scaling OBJ 10+n*2", "the 96 KB VRAM and the 10-bit BG tile number are general knowledge / arithmetic, not re-checked"]

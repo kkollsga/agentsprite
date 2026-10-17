@@ -1,0 +1,9 @@
+# Game Boy Color full screens (image mode "screen"). Inherits console.toml; the size is the console's screen.
+# A 20x18 tile screen has no unique-tile limit (360 cells).
+
+transparent = false
+unique_tiles_max = 360
+pattern_unique = true
+
+[mode]
+description = "Full 160x144 screens built from BG tiles"

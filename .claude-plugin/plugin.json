@@ -1,0 +1,11 @@
+{
+  "name": "agentsprite",
+  "displayName": "AgentSprite (pxl)",
+  "version": "0.1.0",
+  "description": "Skills for the pxl pixel-art CLI: lead a retro-console sprite, tile and screen project (operator), extract source graphics, draw, review and coordinate, on GB, GBC, NES, SMS, Game Gear, Mega Drive, SNES, PC Engine and GBA.",
+  "author": { "name": "kkollsga" },
+  "homepage": "https://github.com/kkollsga/agentsprite",
+  "repository": "https://github.com/kkollsga/agentsprite",
+  "license": "MIT",
+  "keywords": ["pixel-art", "sprites", "retro", "gamedev", "pxl"]
+}

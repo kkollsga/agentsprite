@@ -1,0 +1,46 @@
+# Nintendo Entertainment System (2C02 PPU). A project may override any key from disk.
+colour_bits = 0          # no colour channels: the 2C02 master palette
+channel_step = 1
+fixed_colours = ["#7c7c7c", "#0000fc", "#0000bc", "#4428bc", "#940084", "#a80020", "#a81000", "#881400", "#503000", "#007800", "#006800", "#005800", "#004058", "#000000", "#bcbcbc", "#0078f8", "#0058f8", "#6844fc", "#d800cc", "#e40058", "#f83800", "#e45c10", "#ac7c00", "#00b800", "#00a800", "#00a844", "#008888", "#f8f8f8", "#3cbcfc", "#6888fc", "#9878f8", "#f878f8", "#f85898", "#f87858", "#fca044", "#f8b800", "#b8f818", "#58d854", "#58f898", "#00e8d8", "#787878", "#fcfcfc", "#a4e4fc", "#b8b8f8", "#d8b8f8", "#f8b8f8", "#f8a4c0", "#f0d0b0", "#fce0a8", "#f8d878", "#d8f878", "#b8f8b8", "#b8f8d8", "#00fcfc", "#f8d8f8"]
+export_palette = "nes"
+
+tile = [8, 8]
+hw_cell = [8, 16]        # 8x8 or 8x16 (PPUCTRL bit 5), one size for all sprites
+hw_cells_max = 64        # OAM: 64 sprites
+hw_cells_per_row_max = 8 # 8 sprites per scanline
+palettes = 4             # BG palettes of 3 colours + the shared backdrop
+obj_palettes = 4         # sprite palettes of 3 colours + transparent
+colors = 3
+colors_per_tile = 4      # 3 + the backdrop colour (entry 0 is shared by every palette)
+attr_block = [16, 16]    # one BG palette per 16x16 pixel (2x2 tiles) attribute area
+vram_banks = 1
+vram_tiles_per_bank = 512 # CHR 8 KB: 256 BG + 256 OBJ tiles
+obj_tiles_max = 256
+bg_tiles_max = 256
+sprite_cells = 128        # OBJ tiles / 2 (8x16 cells): a ceiling; streaming budgets are not modelled (R6)
+window_tiles = 0
+dma_bytes_per_frame = 0   # not modelled
+vram_share = false
+dedupe_flips = false      # BG tiles cannot be mirrored
+sheet_width = 128
+
+auto_template = "set"   # `pxl image` / `ingest`: an asset-local palette set and a palette per cell
+
+[style]
+# design-language hints read by skills, the automatic first version and the quality harness; a project [style] overrides them
+white = "highlights"
+outline = "darkest"
+min_value_spread = 0.6
+value_map = "colour"
+reason = "NES sprites have three colours from a fixed palette: the colour identifies a material, white is for highlights and eyes."
+
+[console]
+name = "Nintendo Entertainment System"
+short = "NES / Famicom"
+screen = [256, 240]
+preview_bg = "#3cbcfc"   # a typical sky-blue backdrop ($21)
+colour = "fixed 2C02 master palette: 64 entries (6-bit index), 55 distinct colours; black is $0F"
+palettes = "4 BG + 4 sprite palettes of 4 entries; entry 0 is the shared backdrop (transparent for sprites); BG palette chosen per 16x16 pixels"
+oam = "64 sprites per frame, 8 per scanline, 8x8 or 8x16 (one size for all)"
+vram = "CHR 8 KB = 512 tiles: 256 BG + 256 OBJ (pattern tables)"
+references = ["NESdev wiki PPU palettes (nesdev.org/wiki/PPU_palettes): 4 BG and 4 sprite palettes of 4 colours, shared backdrop entry 0, entry 0 transparent for sprites, 64-entry master palette, $0F canonical black", "NESdev wiki PPU attribute tables (nesdev.org/wiki/PPU_attribute_tables): each 2-bit area covers 16x16 pixels / 2x2 tiles", "NESdev wiki PPU sprite evaluation (nesdev.org/wiki/PPU_sprite_evaluation): 64 sprites, at most 8 per scanline", "RGB values of the master palette: the common FCEUX rendering (the real colours depend on the decoder, nesdev.org/wiki/PPU_palettes); 8x8/8x16 sprites and the 256 + 256 CHR tiles are from general NES knowledge, not re-checked here"]

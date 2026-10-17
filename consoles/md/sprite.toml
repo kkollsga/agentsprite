@@ -1,0 +1,6 @@
+# MD sprites (image mode "sprite"). Inherits console.toml.
+shared_palette = true
+overlays = "allow"     # a second colour layer is a second sprite on the same cells; the sprite limits count it
+
+[mode]
+description = "OBJ sprites: 1-4 x 1-4 tile sprites, 15 colours plus transparent per palette line, 80 per frame, 20 and 320 pixels per scanline"

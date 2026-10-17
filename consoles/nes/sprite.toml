@@ -1,0 +1,46 @@
+# NES sprites (image mode "sprite"). Inherits console.toml.
+shared_palette = true
+overlays = "allow"     # a second colour layer is a second sprite on the same cells; the sprite limits count it
+
+# Palette-set parts: the categories carry no extra budget on the NES, only the hardware limits (8 per scanline, 64 per frame).
+category = "item"
+
+[mode]
+description = "OBJ sprites: 8x16 cells, 3 colours plus transparent per palette (4 palettes), 64 per frame, 8 per scanline"
+
+[budget.player]
+per_line = 8
+per_frame = 64
+overlay_line = 8
+[budget.enemy]
+per_line = 8
+per_frame = 64
+overlay_line = 8
+[budget.item]
+per_line = 8
+per_frame = 64
+overlay_line = 8
+[budget.hazard]
+per_line = 8
+per_frame = 64
+overlay_line = 8
+[budget.effect]
+per_line = 8
+per_frame = 64
+overlay_line = 8
+[budget.platform]
+per_line = 8
+per_frame = 64
+overlay_line = 8
+[budget.scenery]
+per_line = 8
+per_frame = 64
+overlay_line = 8
+[budget.boss]
+per_line = 8
+per_frame = 64
+overlay_line = 8
+[budget.screen]
+per_line = 8
+per_frame = 64
+overlay_line = 8

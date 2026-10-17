@@ -1,0 +1,6 @@
+# MD full screens (image mode "screen"). Inherits console.toml; the size is the console's screen.
+transparent = false
+unique_tiles_max = 1280
+
+[mode]
+description = "Full screens built from BG tiles"

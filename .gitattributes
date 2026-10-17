@@ -1,0 +1,6 @@
+# Fixtures, scripts, grids and project files are byte-exact text: LF on every OS (a CRLF checkout breaks
+# `sh`/`bash` scripts and tests that match multi-line text).
+* text=auto eol=lf
+*.png binary
+*.aseprite binary
+*.ase binary

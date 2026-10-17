@@ -1,0 +1,50 @@
+Read the skill: `pxl skill show pxl-sprite` (or install with `pxl skill install`). It holds the craft; this page is the command table. Skills: pxl-operator (lead a project: infer, plan, style frames, deliver), pxl-extract (source graphics into the inbox), pxl-sprite, pxl-tiles (artists), pxl-review, pxl-coordinate.
+PART = the .pxl path `pxl next` prints, FRAME = a frame name. Coordinates are 0-based x,y from the top left (x = column, y = row).
+Put --agent NAME on every command that edits; --json gives one JSON object. Exit codes: 0 ok, 1 validation or lint error, 2 usage, 3 I/O.
+The tool enforces only objective limits (size, palette, format, template) of the project's console and the part's mode (pxl console show; pxl migrate updates an old project). One picture or a project of assets: pxl guide project. Scores and notes say where to look; the looks are yours.
+
+SKILLS   pxl skill list | show NAME [--ref FILE] | install [--dir DIR] [--force]
+LOOK AND DECIDE (read-only)
+  pxl next --agent A1                              # claim the next part (prints PART, task)
+  pxl compare PART                                 # sheets (input | output | diff) + table: where to look first (similarity), notes
+  pxl compare PART --frames FRAME --zoom           # one frame large; cell coordinates every 4 cells on the output panel
+  pxl view PART FRAME --zoom 6 --region 8,6,20,24 --features   # frame + reference PNG; --features rings eye-like details (hint)
+  pxl show PART FRAME --region 12,6,10,8 --ref     # frame + input as letters (rows 12a/12b); labelled rows to copy and edit
+  pxl candidates PART FRAME                        # start points per method next to the reference
+  pxl lint PART --frames FRAME --advice            # limits (errors) and notes (observations, never failures)
+  pxl reload PART --try vote,contour,exemplar,auto # score the methods per frame, writes nothing
+SELECTORS (--frames on compare, lint, reload, load, clean; commas combine): 06_walk11 (name)  walk* (wildcard)  6-11 (1-based range)  tag:walk
+  pxl compare PART --frames 'walk*,tag:wait'
+EDIT (key = template key character or role name, e.g. W or white; every edit prints the changed region)
+  pxl set PART FRAME 17,11=W 18,11=W 19,11=outline # single pixels
+  pxl row PART FRAME 16 13 "1222221"               # run on row y=13 from x=16 on (x=16 y=13 also works; space = unchanged)
+  pxl patch PART FRAME -                           # stdin = rows from `show` with letters changed; labels place them
+  pxl fill PART FRAME 15,17 3                      # flood fill, 4-connected
+  pxl replace PART FRAME 2=1 --region 9,6,6,8      # swap keys in a region
+  pxl copy PART FRAME OTHER --region 9,6,14,10     # copy pixels FRAME -> OTHER
+  pxl mirror PART FRAME x --keep low               # make symmetric
+  pxl nudge PART FRAME 0,-1                        # shift whole frame(s)
+  pxl outline PART FRAME --key outline             # re-close the outline ring
+  pxl pick PART FRAME contour --region 9,6,14,10   # take one method's pixels for a region (none = whole frame)
+  pxl snippet save PART FRAME eye --region 17,11,2,3
+  pxl pattern PART FRAME --unit 0,0,2,2 --region 8,8,8,8   # repeat a unit (or a snippet name) with a fixed phase; --mask KEY keeps outlines; textures (`pxl pattern suggest PART FRAME --region x,y,w,h --save NAME` reads the unit off the reference)
+  also: line rect flip move nudge outline replace (pxl SUBCMD --help); tile sets: pxl skill show pxl-tiles; --tile N edits one 8x8 tile; palette_set parts: pxl cells PART FRAME --png c.png | palette fit PART [--apply] | budget SCENE | cells dedupe PART --max N | show --cells | compare/cells --set ZONE | scene NAME --worst --png w.png | delivery --template T
+  pxl stamp PART FRAME eye 17,11 --flip x         # paste a saved snippet
+  pxl fix PART FRAME --rules orphan,jaggy,eye      # apply the lint fix commands (optional)
+  pxl clean PART --frames FRAME --orphans --jaggies --dry-run   # report; drop --dry-run to fix
+  pxl write_grid PART FRAME -                      # replace the whole frame from stdin
+  pxl apply PART ops.json                          # atomic batch, ONE undo step; `pxl apply --help` lists every op and field
+  ops.json: [{"op":"set","frame":"FRAME","pixels":["17,11=W","18,11=white"]},{"op":"row","frame":"FRAME","x":16,"y":13,"pixels":"1222221"},{"op":"copy","from":"FRAME","to":"OTHER","region":[9,6,14,10]}]
+  pxl undo PART --steps 2                          # revert edits (journal next to the part)
+  Every edit also takes --no-lock, --dry-run and --preview (reference | before | after PNG). Errors name file, frame, row, col.
+DELIVER
+  pxl export PART                                  # indexed PNG per layer + .aseprite (needs 0 lint errors)
+  pxl release PART --state done --note "hand-fixed"   # or --state blocked --note "why"
+  pxl status                                       # state, owner, stale, export freshness; also pxl check, pxl build
+METHODS (load/reload --method M): vote (safe baseline), nearest (exact integer upscales), contour (silhouette first), exemplar (copies from locked frames), auto (best of the three per frame)
+LOCKS  Every edit locks its frame (--no-lock opts out); reload never overwrites locked frames (--force does) and learns from them.
+  pxl renew PART --agent A1                        # extend the lease; a part claimed by another live agent refuses edits
+  pxl lineup PART:FRAME PART:OTHER --zoom 4       # frames of several parts side by side at 1x and zoomed: judge textures and neighbours
+  pxl status --raw                                 # frames/tiles still equal to the automatic output (pxl check --hand-finished fails on them)
+  pxl diff PART FRAME --frames OTHER               # pixel differences between two frames
+  Coordinator: pxl review --state done (packet per part: compare, lineup with siblings, review.md), pxl approve PART, pxl rework PART --frames SEL --note "...", pxl status --rework | --metrics. Never edit templates or the manifest by hand.

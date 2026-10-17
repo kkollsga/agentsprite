@@ -1,0 +1,44 @@
+# Game Boy (DMG): the hardware facts shared by every image mode. A project may override any key from disk.
+colour_bits = 0          # no colour channels: four fixed shades
+channel_step = 1
+fixed_colours = ["#ffffff", "#aaaaaa", "#555555", "#000000"]   # shade 0 (white) .. 3 (black)
+export_palette = "gb"
+auto_template = "set"   # `pxl image` / `ingest`: OBP0 / OBP1 as a palette set, a palette per 8x16 cell, luminance stretch
+
+tile = [8, 8]
+hw_cell = [8, 16]        # 8x8 or 8x16, chosen by LCDC bit 2 for all sprites; 8x16 halves OAM use
+hw_cells_max = 40        # OAM: 40 sprites
+hw_cells_per_row_max = 10 # 10 sprites per scanline
+palettes = 1             # BG: BGP (4 shades)
+obj_palettes = 2         # OBP0 / OBP1: colour index 0 is transparent
+colors = 3               # opaque colours per OBJ palette
+colors_per_tile = 4
+vram_banks = 1
+vram_tiles_per_bank = 384 # 0x8000-0x97FF
+obj_tiles_max = 256       # OBJ tiles 0x8000-0x8FFF
+bg_tiles_max = 256        # BG addresses 256 tiles at a time (0x8000 or 0x8800 method)
+sprite_cells = 128        # OBJ tiles / 2 (8x16 cells): a ceiling; streaming budgets are not modelled (R6)
+window_tiles = 0
+dma_bytes_per_frame = 0   # not modelled
+vram_share = false
+dedupe_flips = false      # DMG BG tiles cannot be mirrored
+sheet_width = 128
+
+[style]
+# design-language hints read by skills, the automatic first version and the quality harness; a project [style] overrides them
+white = "active"
+outline = "darkest"
+min_value_spread = 0.9
+value_map = "stretch"
+reason = "DMG has four greys and no hue: value alone separates materials, so the sprite is stretched to the full range, the darkest material is black, the lightest white and white is a main tone."
+
+[console]
+name = "Game Boy"
+short = "DMG"
+screen = [160, 144]
+preview_bg = "#9bbc0f"   # the DMG LCD green
+colour = "4 fixed shades (2 bits per pixel): white, light grey, dark grey, black"
+palettes = "1 BG palette (BGP) and 2 OBJ palettes (OBP0/OBP1) of 4 shades; OBJ index 0 is transparent"
+oam = "40 sprites per frame, 10 per scanline, 8x8 or 8x16 (one size for all)"
+vram = "384 tiles (8 KB, 0x8000-0x97FF); OBJ 0x8000-0x8FFF, BG 256 addressable tiles"
+references = ["Pan Docs OAM (gbdev.io/pandocs/OAM.html): 40 objects, 10 per scanline, 8x8 or 8x16, object tiles $8000-$8FFF", "Pan Docs Palettes (gbdev.io/pandocs/Palettes.html): BGP maps indexes to white / light gray / dark gray / black, OBP0 and OBP1, colour index 0 transparent for OBJs", "384 tiles = the 0x8000-0x97FF tile data of Pan Docs Tile Data (derived: 6144 bytes / 16)"]

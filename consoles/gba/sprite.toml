@@ -1,0 +1,6 @@
+# GBA sprites (image mode "sprite"). Inherits console.toml.
+shared_palette = true
+overlays = "allow"     # a second colour layer is a second sprite on the same cells; the sprite limits count it
+
+[mode]
+description = "OBJ sprites: the 12 OBJ shapes (8x8 to 64x64), 15 colours plus transparent per palette (16 palettes), 128 per frame, 1210 cycles (pixels) per scanline"

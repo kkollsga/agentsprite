@@ -1,0 +1,58 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+env:
+  CARGO_TERM_COLOR: always
+
+permissions:
+  contents: read
+
+jobs:
+  rust-checks:
+    name: Build and test (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@v7
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+        with:
+          shared-key: ci-${{ matrix.os }}
+      - name: Build (release, as shipped)
+        run: cargo build --release --locked
+      - name: Smoke test
+        shell: bash
+        run: |
+          target/release/pxl --version
+          target/release/pxl console list
+      - name: Run tests
+        run: cargo test --locked --no-fail-fast -- --test-threads=2
+
+  release-gates:
+    name: Release-gate script, install script and workflows
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+        with:
+          shared-key: ci-gates
+      # release.yml runs only on a v* tag push, so its gate logic lives in scripts/release_gates.sh and these tests
+      # drive every function through both its pass and its fail path on every push.
+      - name: Unit-test scripts/release_gates.sh and install.sh
+        run: cargo test --locked --test release_gates --test install_script -- --test-threads=2
+      - name: Shellcheck the shell scripts
+        run: shellcheck install.sh scripts/release_gates.sh
+      - name: Lint the workflows with actionlint
+        uses: docker://rhysd/actionlint:1.7.12
+        with:
+          args: -color

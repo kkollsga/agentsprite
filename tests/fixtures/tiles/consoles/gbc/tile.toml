@@ -1,0 +1,6 @@
+# The old BG tile rules as a project override of consoles/gbc/tile.toml: 300 unique tiles by pixel colours, all 8 palettes.
+unique_tiles_max = 300
+count_animated = false
+pattern_unique = false
+bg_reserved = []
+vram_share = false

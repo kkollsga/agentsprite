@@ -1,0 +1,53 @@
+# Game Boy Color: the hardware facts shared by every image mode.
+# sprite.toml, tile.toml and screen.toml inherit these keys and may override them.
+# A project can override any key from disk: consoles/gbc/console.toml (or sprite.toml, tile.toml, screen.toml).
+
+# Colour model
+channel_step = 8          # RGB555: every channel is a multiple of 8
+
+# Tiles and sprite cells
+tile = [8, 8]
+hw_cell = [8, 16]         # sprites are 8x16 cells
+hw_cells_per_row_max = 10 # hard limit (error): sprites per scanline band
+hw_cells_max = 40         # hard limit (error): sprites per frame (OAM)
+
+# Palettes
+palettes = 8              # BG palettes, 4 colours each
+obj_palettes = 8          # OBJ palettes, 3 colours + transparent
+colors_per_tile = 4
+
+# VRAM and transfer
+vram_banks = 2
+vram_tiles_per_bank = 384
+sprite_cells = 178        # sprite VRAM in 8x16 cells: resident groups + double-buffered streamed groups
+window_tiles = 64         # HUD / text / card tiles of the reserved palette
+vram_shared_tiles = 256   # tiles in the OBJ+BG shared block over both banks
+obj_tiles_max = 512       # OBJ addresses 0x8000-0x8FFF: 256 tiles per bank
+bg_tiles_max = 512        # BG (8800 mode) addresses 0x8800-0x97FF incl. the window: 256 per bank
+dma_bytes_per_frame = 1024 # streamed groups: changed cells x 32 bytes between consecutive frames
+
+# Image sheets
+dedupe_flips = true
+sheet_width = 128
+
+# Descriptions (shown by `pxl console list | show`)
+auto_template = "set"   # `pxl image` / `ingest`: an asset-local palette set and a palette per cell
+
+[style]
+# design-language hints read by skills, the automatic first version and the quality harness; a project [style] overrides them
+white = "highlights"
+outline = "darkest"
+min_value_spread = 0.6
+value_map = "colour"
+reason = "GBC has 5 bits per channel and 8 palettes: hues carry the materials, so white is kept for highlights, eye whites and glints."
+
+[console]
+name = "Game Boy Color"
+short = "GBC"
+screen = [160, 144]
+preview_bg = "#d8d8d8"   # compare_1x.png background (a neutral light grey; the real LCD has no fixed backdrop)
+colour = "RGB555 (5 bits per channel, 8 per step in 8-bit RGB)"
+palettes = "8 OBJ + 8 BG palettes of 4 colours (OBJ colour 0 is transparent)"
+oam = "40 sprites per frame, 10 per scanline, 8x16 cells"
+vram = "2 banks x 384 tiles; 0x8800-0x8FFF is addressable by both OBJ and BG"
+references = ["Pan Docs OAM (gbdev.io/pandocs/OAM.html): 40 objects, 10 per scanline, 8x8 or 8x16, object tiles $8000-$8FFF with attribute bit 3 selecting the VRAM bank", "Pan Docs Palettes (gbdev.io/pandocs/Palettes.html): 8 BG + 8 OBJ palettes of 4 colours, RGB555 (blue bits 10-14, green 5-9, red 0-4), colour index 0 transparent for OBJs", "Pan Docs Tile Data and CGB registers (gbdev.io/pandocs): 2 banks x 384 tiles"]

@@ -1,0 +1,26 @@
+name = "fx"
+size = [8, 16]
+origin = [0, 0]
+template = "templates/t.toml"
+palette_set = "p"
+
+[[frames]]
+name = "a"
+grid = """
+123W123W
+23W123W1
+3W123W12
+W123W123
+123W123W
+23W123W1
+3W123W12
+W123W123
+123W123W
+23W123W1
+3W123W12
+W123W123
+123W123W
+23W123W1
+3W123W12
+W123W123
+"""

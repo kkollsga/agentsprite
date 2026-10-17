@@ -1,0 +1,48 @@
+# Super Nintendo (S-PPU). A project may override any key from disk.
+colour_bits = 5
+channel_step = 8         # BGR555, as the Game Boy Color: channels in steps of 8
+export_palette = "snes"
+
+tile = [8, 8]
+hw_cell = [8, 8]         # the tile grid; a sprite is one of the two sizes of the chosen pair
+sprite_size_mode = "variable"
+# OBSEL size pair 3 (16x16 / 32x32). The pairs (fullsnes): 0 8x8/16x16, 1 8x8/32x32, 2 8x8/64x64, 3 16x16/32x32, 4 16x16/64x64,
+# 5 32x32/64x64, and the undocumented 6 16x32/32x64, 7 16x32/32x32. Override `sprite_sizes` in consoles/snes/sprite.toml to choose another.
+sprite_sizes = [[16, 16], [32, 32]]
+hw_cells_max = 128       # OAM: 128 sprites
+hw_cells_per_row_max = 32 # 32 sprites per scanline
+hw_pixels_per_line_max = 272 # 34 eight-pixel slivers per scanline (8 x 34)
+palettes = 8             # BG palettes of 16 colours (4bpp modes)
+obj_palettes = 8         # CGRAM 128-255: 8 sprite palettes of 16, colour 0 transparent
+colors = 15
+colors_per_tile = 16
+vram_banks = 1
+vram_tiles_per_bank = 2048 # 64 KB of VRAM / 32 bytes (4bpp tile), a ceiling shared with the tile maps (derived)
+obj_tiles_max = 1024      # sprite names are 8 bits + the name-select bit, over two tables (not re-checked)
+bg_tiles_max = 1024       # a tile map entry has a 10-bit tile number
+sprite_cells = 512        # a ceiling; streaming budgets are not modelled (R6)
+window_tiles = 0
+dma_bytes_per_frame = 0   # not modelled
+vram_share = false
+dedupe_flips = true       # tile map entries have flip bits
+sheet_width = 128
+auto_template = "flat"    # one palette per sprite: a character in one 15-colour palette
+
+[style]
+# design-language hints read by skills, the automatic first version and the quality harness; a project [style] overrides them
+white = "highlights"
+outline = "darkest"
+min_value_spread = 0.6
+value_map = "colour"
+reason = "SNES has 5 bits per channel and 15 colours per palette: enough ramps for hue materials, white stays a highlight."
+
+[console]
+name = "Super Nintendo"
+short = "SNES / Super Famicom"
+screen = [256, 224]
+preview_bg = "#000000"
+colour = "32768 colours, 15-bit BGR555 (5 bits per channel), CGRAM of 256 entries"
+palettes = "8 sprite palettes of 16 colours (CGRAM 128-255, entry 0 transparent) and BG palettes in the first 128 entries"
+oam = "128 sprites, 32 per scanline and 34 eight-pixel slivers (272 px) per scanline; two sizes per game from 8 pairs"
+vram = "64 KB; sprites and BG share it"
+references = ["SNESdev wiki Sprites (snes.nesdev.org/wiki/Sprites): 544-byte OAM for 128 sprites, 32 sprites and 34 slivers per scanline, 4bpp tiles, 8 palettes from the last half of CGRAM", "SNESdev wiki Palettes (snes.nesdev.org/wiki/Palettes): BGR555, 256-entry CGRAM, sprites use entries 128-255 as eight palettes of 16, entry 0 transparent", "fullsnes OBSEL 2101h (problemkaputt.de/fullsnes.htm): size pairs 0-5 and the undocumented 6 = 16x32/32x64 and 7 = 16x32/32x32; STAT77: more than 32 OBJs per scanline = range overflow, more than 8x34 OBJ pixels = time overflow", "VRAM 64 KB and the 10-bit BG tile number are general SNES knowledge, not re-checked here; 2048 tiles is arithmetic"]

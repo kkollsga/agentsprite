@@ -1,0 +1,9 @@
+[[slots]]
+slot = 0
+name = "body"
+colors = ["#182078", "#4850b8", "#f0b090"]
+
+[[slots]]
+slot = 1
+name = "red"
+colors = ["#900000", "#f80000", "#f8f8f8"]

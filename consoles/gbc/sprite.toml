@@ -1,0 +1,50 @@
+# Game Boy Color sprites (image mode "sprite"). DESIGN "Consoles and image modes".
+# Inherits console.toml.
+
+colors = 3            # per layer, plus transparent
+shared_palette = true
+hw_cells_warn = 12
+hw_cells_per_row_warn = 5
+
+# Shared hardware resources: checked per scene by `pxl check` and `pxl scene`.
+vram_share = true         # BG tiles a scene does not use may hold sprite cells (0x8800-0x8FFF is addressable by both)
+overlays = "category"     # overlay (detail) layers are errors ...
+overlay_categories = ["player"] # ... except for these categories ...
+overlay_cap = 2           # ... with at most this many overlay cells per frame
+
+# Palette-set parts (shared per-cell palettes): category defaults of the hardware feedback of 2026-10-14.
+# A part picks its category (`category = "enemy"`) and may override with `[budget] per_line = .., per_frame = ..`.
+category = "item"        # category of a part that declares none
+multi_slot_max = 2       # player: cells per frame that may need two slots (each costs 2 sprites)
+
+[mode]
+description = "OBJ sprites: 8x16 cells, 3 colours per layer plus transparent, scanline and OAM limits"
+
+[budget.player]
+per_line = 4
+per_frame = 7
+overlay_line = 5         # a line that carries a two-slot cell may hold 5
+[budget.enemy]
+per_line = 4
+per_frame = 8
+[budget.item]
+per_line = 3
+per_frame = 6
+[budget.hazard]
+per_line = 3
+per_frame = 6
+[budget.effect]
+per_line = 3
+per_frame = 6
+[budget.platform]
+per_line = 6
+per_frame = 16
+[budget.scenery]
+per_line = 2
+per_frame = 20
+[budget.boss]
+per_line = 6
+per_frame = 24
+[budget.screen]
+per_line = 10
+per_frame = 30

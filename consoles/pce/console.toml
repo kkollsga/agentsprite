@@ -1,0 +1,46 @@
+# PC Engine / TurboGrafx-16 (HuC6270 VDC + HuC6260 VCE). A project may override any key from disk.
+colour_bits = 3
+channel_step = 32        # 9-bit colour: 3 bits per channel, written as 8-bit multiples of 32
+export_palette = "pce"
+
+tile = [8, 8]
+hw_cell = [16, 16]       # sprites are 16 pixels wide or 32, and 16, 32 or 64 high
+sprite_size_mode = "variable"
+sprite_sizes = [[16, 16], [16, 32], [16, 64], [32, 16], [32, 32], [32, 64]]
+hw_cells_max = 64        # SATB: 64 sprites
+hw_cells_per_row_max = 16 # at most 16 sprites per scanline
+hw_pixels_per_line_max = 256 # 16 sprite slots of 16 pixels: a 32-wide sprite takes two
+palettes = 16            # BG palettes of 16 colours
+obj_palettes = 16        # sprite palettes of 16: 15 colours, entry 0 transparent
+colors = 15
+colors_per_tile = 16
+vram_banks = 1
+vram_tiles_per_bank = 2048 # 64 KB / 32 bytes per 8x8 4bpp tile; sprite patterns are 16x16 (128 bytes): a ceiling (derived)
+obj_tiles_max = 2048
+bg_tiles_max = 2048
+sprite_cells = 512        # a ceiling; streaming budgets are not modelled (R6)
+window_tiles = 0
+dma_bytes_per_frame = 0   # not modelled
+vram_share = false
+dedupe_flips = false      # a background map entry is a tile number and a palette: no flip bits
+sheet_width = 128
+auto_template = "flat"
+
+[style]
+# design-language hints read by skills, the automatic first version and the quality harness; a project [style] overrides them
+white = "highlights"
+outline = "darkest"
+min_value_spread = 0.6
+value_map = "colour"
+reason = "PC Engine has 3 bits per channel and 15 colours per palette: hue materials, white for highlights and eyes."
+
+[console]
+name = "PC Engine"
+short = "TurboGrafx-16"
+screen = [256, 224]
+preview_bg = "#000000"
+colour = "512 colours, 9-bit (3 bits per channel; the VCE word is GRB)"
+palettes = "16 BG + 16 sprite palettes of 16 colours (VCE 512 entries); sprite entry 0 transparent"
+oam = "64 sprites, 16 per scanline (256 pixels), 16 or 32 wide and 16, 32 or 64 high"
+vram = "64 KB"
+references = ["Wikipedia HuC6270 (en.wikipedia.org/wiki/Hudson_Soft_HuC6270): up to 64 sprites on screen, at most 16 per scanline, minimum resolution 256x224", "VDC Reference Manual excerpt (datacrystal.tcrf.net/wiki/VDC_Reference_Manual): 64 simultaneous sprites, the overflow flag for more than 16 sprites on a scanline", "MAME huc6270.cpp (git.redump.net/mame/tree/src/devices/video/huc6270.cpp): CGX bit = 16 or 32 wide, CGY two bits = 16, 32, 64 high - an emulator source, not the Hudson manual (its SATB section was not readable)", "9-bit colour and 16 sprite palettes of 16 with a transparent entry 0: a web summary (SuperGrafx / VCE descriptions); the 256 sprite pixels per scanline is stated for each VDC in the SuperGrafx descriptions; the GRB bit order and the 2048-tile ceiling are general knowledge / arithmetic, not re-checked"]

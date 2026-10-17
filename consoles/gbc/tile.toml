@@ -1,0 +1,12 @@
+# Game Boy Color background tiles (image mode "tile"). DESIGN "Consoles and image modes". Inherits console.toml.
+
+transparent = false
+unique_tiles_max = 348   # level tiles + animated tile slots
+count_animated = true
+anim_slots = "per_frame" # "all_frames": frames x tiles per animation set
+pattern_unique = true    # same 2-bit index pattern (flips) with another palette is the same tile
+bg_reserved = [7]        # BG palette 7 is kept for HUD and text
+vram_share = true
+
+[mode]
+description = "BG tile sets: 8x8 tiles, 4 colours per tile, 8 BG palettes, shared tile budget"

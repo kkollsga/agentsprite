@@ -1,0 +1,46 @@
+# Sega Mega Drive / Genesis (VDP, H40 320x224 mode). A project may override any key from disk.
+colour_bits = 3
+channel_step = 32        # 3 bits per channel: 8 levels, written as 8-bit multiples of 32
+export_palette = "md"
+
+tile = [8, 8]
+hw_cell = [8, 8]         # the tile grid; sprites are 1-4 x 1-4 tiles
+sprite_size_mode = "variable"
+sprite_sizes = [[8, 8], [8, 16], [8, 24], [8, 32], [16, 8], [16, 16], [16, 24], [16, 32], [24, 8], [24, 16], [24, 24], [24, 32], [32, 8], [32, 16], [32, 24], [32, 32]]
+hw_cells_max = 80        # 80 sprites on screen (64 in H32)
+hw_cells_per_row_max = 20 # 20 sprites per scanline (16 in H32)
+hw_pixels_per_line_max = 320 # and 320 sprite pixels per scanline (256 in H32)
+palettes = 4             # 4 palette lines of 16, shared by both planes and sprites
+obj_palettes = 4
+shared_bg_obj = true
+colors = 15
+colors_per_tile = 16
+vram_banks = 1
+vram_tiles_per_bank = 2048 # 64 KB; planes, window, sprite and scroll tables take about 370 of them
+obj_tiles_max = 2048
+bg_tiles_max = 2048
+sprite_cells = 1024       # a ceiling (all tiles in 8x16 cells); streaming budgets are not modelled (R6)
+window_tiles = 0
+dma_bytes_per_frame = 0   # not modelled
+vram_share = false
+dedupe_flips = true       # tiles have H/V flip bits
+sheet_width = 128
+
+[style]
+# design-language hints read by skills, the automatic first version and the quality harness; a project [style] overrides them
+white = "highlights"
+outline = "darkest"
+min_value_spread = 0.6
+value_map = "colour"
+reason = "Mega Drive has 3 bits per channel (steps of 32): use the lightest ramp step for highlights, white for eyes and glints."
+
+[console]
+name = "Sega Mega Drive"
+short = "Genesis"
+screen = [320, 224]
+preview_bg = "#000000"
+colour = "512 colours, 3 bits per channel (0000BBB0GGG0RRR0)"
+palettes = "4 palette lines of 16 colours (CRAM 128 bytes), shared by planes and sprites; entry 0 of each line is transparent"
+oam = "1x1 to 4x4 tile sprites; 80 per frame, 20 per scanline, 320 pixels per scanline (H40); 64 / 16 / 256 in H32"
+vram = "64 KB = 2048 tiles of 32 bytes"
+references = ["Plutiedev sprites (plutiedev.com/sprites): sprites 1x1 to 4x4 tiles (width and height independent), 80 / 20 / 320 per frame / scanline / pixels in 320-pixel mode, 64 / 16 / 256 in 256-pixel mode", "Sega Retro Palettes and CRAM (segaretro.org/CRAM_dots) via search: 4 palettes of 16 colours = 64 colours in 128 bytes of CRAM, 3-bit B, G, R values as $0BGR with even nybbles only; colour 0 of each line transparent (gendev.spritesmind.net forum)", "512 colours = 8 levels per channel cubed (arithmetic); 64 KB VRAM = 2048 tiles (arithmetic); the Genesis software manual was not reachable, so the primary Sega document is not quoted"]

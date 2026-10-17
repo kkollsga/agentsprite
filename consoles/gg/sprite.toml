@@ -1,0 +1,6 @@
+# GG sprites (image mode "sprite"). Inherits console.toml.
+shared_palette = true
+overlays = "allow"     # a second colour layer is a second sprite on the same cells; the sprite limits count it
+
+[mode]
+description = "OBJ sprites: 8x16 cells, 15 colours plus transparent (one sprite palette), 64 per frame, 8 per scanline"

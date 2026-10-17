@@ -1,0 +1,39 @@
+[package]
+name = "agentsprite"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+description = "pxl: pixel art tooling for retro consoles, for humans and AI agents. Reduce, hand-finish, check and deliver sprites, tiles and screens within real hardware limits (GB, GBC, NES, SMS, GG, Mega Drive, SNES, PC Engine, GBA)."
+repository = "https://github.com/kkollsga/agentsprite"
+homepage = "https://github.com/kkollsga/agentsprite"
+readme = "README.md"
+publish = false   # distributed as prebuilt binaries from GitHub Releases
+keywords = ["pixel-art", "sprites", "retro", "gamedev", "ai-agents"]
+categories = ["command-line-utilities", "multimedia::images", "game-development"]
+
+[lib]
+name = "agentsprite"
+path = "src/lib.rs"
+
+[[bin]]
+name = "pxl"
+path = "src/main.rs"
+
+[dependencies]
+png = "0.17"
+miniz_oxide = "0.8"
+clap = { version = "4", features = ["derive"] }
+serde = { version = "1", features = ["derive"] }
+toml = { version = "0.8", features = ["preserve_order"] }
+serde_json = { version = "1", features = ["preserve_order"] }
+anyhow = "1"
+
+[profile.release]
+opt-level = 3
+lto = "thin"
+codegen-units = 4
+panic = "abort"
+strip = true
+
+[profile.dev]
+opt-level = 1

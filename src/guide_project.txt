@@ -1,0 +1,52 @@
+PROJECT GUIDE (pxl guide project). Two ways to work: one picture, or a project of many assets. The craft is in `pxl skill show pxl-sprite`; leading a project is `pxl skill show pxl-operator`; getting source graphics out of ROMs and dumps is `pxl skill show pxl-extract`. Any console: pxl console list.
+
+ONE PICTURE (no project)
+  pxl image blob.png --console gbc|gb|nes|sms|gg|md|snes|pce|gba --mode sprite --size 32x32   # makes blob.pxl/ beside it: input/, versions/, compare.png, asset.pxl
+  pxl lint blob.pxl ; pxl set blob.pxl blob 3,3=1               # every command takes the folder (or blob.pxl/asset.pxl)
+  pxl export blob.pxl                                           # console-format files in blob.pxl/export/
+
+PROJECT
+  pxl new game --console gbc --name Game                        # pxl.toml, inbox/ assets/ palettes/ consoles/ templates/ export/ review/
+  pxl ingest [inbox|files|globs|folder] [--group enemies] [--mode tile] [--grid 32x32 | --frames auto] [--name-from file|folder] [--separate]
+  numbered pictures (walker_01.png, walk1.png, walk-03.png) become ONE asset of frames; --separate opts out
+  pxl tree ; pxl group list|add NAME|move ASSET GROUP ; pxl project show
+  [project.defaults] in pxl.toml (mode, size, factor, category, palette_set, template) fill new assets; [project.settings] is free-form
+  An asset is assets/<group>/<name>/ with asset.pxl, input/, versions/, compare.png, compare.html. Name it anywhere: pxl lint blob
+
+VERSIONS (automatic: every write of asset.pxl stores one; nothing to remember)
+  versions/<name>_vNNN.png (sheet of all frames) + .pxl, compare.png = input | latest, then the scene budget delta and the asset's export
+  pxl versions ASSET ; pxl revert ASSET v003 ; pxl import ASSET file.png|.aseprite ; --no-version for bulk work
+  Variants: pxl variant add|list ASSET ; pxl variant deliver ASSET NAME (one is delivered, the others export to export/variants/)
+
+PLAN AND DELIVERY (manifest = true in [project]; `pxl plan --apply` sets it)
+  pxl plan [--apply] ; pxl plan accept [--by user] (default: agent) ; pxl palette plan SCENE [--reserve 7] [--what-if] ; pxl budget SCENE --what-if "remove PART"
+  pxl meta ASSET set collision 48x8 | frame NAME dropped true --reason WHY | zone-remap SCENE 4=5 ; pxl qa ; pxl scene X --layout
+  pxl build (writes export/manifest.json) ; pxl sheet GROUP ; pxl package ; pxl verify-package ; pxl deliver [--client-checker CMD]
+  pxl changes --since N ; [delivery] spec / client_spec / client_checker / package in pxl.toml
+
+WORK LISTS
+  pxl task add ASSET "text" [--kind draw|fix|review|question] [--assign NAME] [--priority N] ; pxl tasks [--mine|--assign N|--group G|--all]
+  pxl task done t0001 --note "..." ; pxl next --agent A (assigned tasks first) ; pxl rework ASSET --note "..." makes a fix task
+  pxl board [--html board.html] ; pxl brief ASSET|GROUP (decisions, tasks, review history, budgets, paths: read it first)
+  pxl decide "text" [--asset A] [--by user] ; pxl exception add ASSET "change" --reason "why"
+
+REVIEW
+  pxl review next ; pxl review note ASSET FRAME "text" --region x,y,w,h --agent NAME (a colour or direction needs the region; crop saved)
+  pxl review approve ASSET --agent NAME ; pxl review rework ASSET --note "..." --agent NAME ; approved by `user`: --force-user-approved to change
+
+OPERATOR AND DESIGN LANGUAGE (pxl new sets [project] gates = true; --no-gates opts out; old projects keep working)
+  pxl intake --request "NES port, faithful, weekly updates" ; infers console, modes, fidelity, identity list, cadence, trade-offs into brief.toml;
+    every item is an assumption (decisions.md, [operator]); it asks at most a few real questions as decisions with options + a recommendation
+  pxl decide "why" --set fidelity=reinterpreted --by user (reverse an assumption) ; pxl intake --interview | --answers FILE are opt-in
+  pxl style analyze ; pxl style propose ; pxl style mark hero [FRAMES] ; pxl style approve [--by user] (default: agent) ; pxl style show   (style.md rules have ids: outline, eyes, identity, ramps, light, white, highlight, dither, fold, readability)
+  gates on lint (warnings that block approval): eye_parity, identity_colour, flat, consistency, readability ; pxl lint ASSET --rules eye_parity runs one anywhere
+  pxl review checklist ASSET ; pxl review note ASSET FRAME "text" --region x,y,w,h --rule eyes --agent R ; pxl review approve ASSET --agent R [--justify "why the warnings are acceptable"]
+  pxl milestone status ; plan accepted -> style approved (style.md + style frames approved) -> pxl deliver --dry-run -> then pxl next hands out production work (before: style frames only)
+  pxl ask "topic" --option A=img.png|label --option B=img.png --recommend A "why" ; pxl decisions ; pxl decide d0001 A ; pxl task add ASSET "text" --after d0001
+  pxl report [--html] [--if-due] (done, in review, new images, pending decisions, budgets, milestones; cadence from the brief)
+
+NO SILENT SKIPS: a gate, compare or style analysis without its source image prints `reference_missing: part P frame F ...` (a warning, never blocks approval alone); gated `pxl check` ends with `references: checked N of M frame(s) with references`.
+MANIFEST (never edit TOML by hand)
+  pxl scene set SCENE KEY VALUE | SCENE group.GROUP.budget N ; pxl scene add-part SCENE GROUP PART ; pxl scene remove-part SCENE PART ; pxl palette slot set SET SLOT #rrggbb x3 | remove SET SLOT
+  pxl asset set ASSET category player ; pxl project set defaults.category enemy ; pxl style identity ASSET show|add|remove|set #rrggbb.. (the list the gates use) ; pxl decide "why" --set identity.ASSET=#rrggbb,.. ; stacked sprites (player only, 2 sprites each, see pxl console show): ingest --group player
+  pxl build (also moves outputs no part produces any more to export/.removed/) ; pxl check ("checked N of M" says how much it saw) ; pxl migrate [--dry-run] | --layout assets (old project)

@@ -1,0 +1,20 @@
+name = "t_map"
+
+[layers.base]
+"." = { role = "transparent" }
+"1" = { role = "outline", color = "#182078" }
+"2" = { role = "body", color = "#4850b8" }
+"3" = { role = "skin", color = "#f0b090" }
+
+[layers.detail]
+"W" = { role = "white", color = "#f8f8f8", under = "3" }
+"R" = { role = "shoe", color = "#f80000", under = "1" }
+"r" = { role = "shoe_dark", color = "#900000", under = "1" }
+
+[map]
+"#182078" = "1"
+"#4850b8" = "2"
+"#f0b090" = "3"
+"#f8f8f8" = "W"
+"#f80000" = "R"
+"#900000" = "r"

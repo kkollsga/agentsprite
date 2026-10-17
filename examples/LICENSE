@@ -1,0 +1,9 @@
+CC0 1.0 Universal (Public Domain Dedication)
+
+The files in this folder (examples/inputs/**, the demo scripts and the generator examples/gen_inputs.rs) were created for the AgentSprite
+project by its authors, with code, and contain no third-party art. To the extent possible under law, the authors have waived all copyright and
+related or neighbouring rights to them. You can copy, modify, distribute and use the work, even for commercial purposes, without asking permission.
+
+Full legal text: https://creativecommons.org/publicdomain/zero/1.0/legalcode
+
+(The rest of the repository is under the MIT licence: see ../LICENSE.)

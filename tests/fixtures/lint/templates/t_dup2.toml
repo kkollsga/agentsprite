@@ -1,0 +1,12 @@
+name = "t_dup2"
+
+[layers.base]
+"." = { role = "transparent" }
+"1" = { role = "outline", color = "#182078" }
+"2" = { role = "body", color = "#4850b8" }
+"3" = { role = "skin", color = "#f0b090" }
+
+[layers.detail]
+"W" = { role = "white", color = "#4850b8", under = "3" }
+"R" = { role = "shoe", color = "#f80000", under = "1" }
+"r" = { role = "shoe_dark", color = "#900000", under = "1" }

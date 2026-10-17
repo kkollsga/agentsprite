@@ -1,0 +1,26 @@
+name = "fx"
+size = [8, 16]
+origin = [0, 0]
+template = "templates/t.toml"
+palette_set = "p"
+
+[[frames]]
+name = "a"
+grid = """
+1R1R1R1R
+R1R1R1R1
+1R1R1R1R
+R1R1R1R1
+1R1R1R1R
+R1R1R1R1
+1R1R1R1R
+R1R1R1R1
+1R1R1R1R
+R1R1R1R1
+1R1R1R1R
+R1R1R1R1
+1R1R1R1R
+R1R1R1R1
+1R1R1R1R
+R1R1R1R1
+"""

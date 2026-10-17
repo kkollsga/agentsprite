@@ -1,0 +1,6 @@
+# PCE sprites (image mode "sprite"). Inherits console.toml.
+shared_palette = true
+overlays = "allow"     # a second colour layer is a second sprite on the same cells; the sprite limits count it
+
+[mode]
+description = "OBJ sprites: 16-32 x 16-64 pixel sprites, 15 colours plus transparent per palette (16 palettes), 64 per frame, 16 per scanline"

@@ -1,0 +1,722 @@
+{
+  "gb/bug48": {
+    "spread": 1.0,
+    "white_deficit": 0.005,
+    "mde": 33.926,
+    "hue_worst": 36.711,
+    "neutral": 0.5,
+    "white_over": -0.005,
+    "eyes": 1.0,
+    "flat_block": 0.28
+  },
+  "gb/bug64": {
+    "spread": 0.738,
+    "white_deficit": 0.003,
+    "mde": 31.081,
+    "hue_worst": 25.313,
+    "neutral": 1.0,
+    "white_over": -0.003,
+    "eyes": 1.0,
+    "flat_block": 0.315
+  },
+  "gb/char64": {
+    "spread": 1.0,
+    "white_deficit": 0.0,
+    "mde": 23.283,
+    "hue_worst": 27.541,
+    "neutral": 1.0,
+    "white_over": 0.286,
+    "eyes": 1.0,
+    "flat_block": 0.571
+  },
+  "gb/enemy2x": {
+    "spread": 1.0,
+    "white_deficit": 0.012,
+    "mde": 24.205,
+    "hue_worst": 19.052,
+    "neutral": 0.5,
+    "white_over": 0.004,
+    "eyes": 1.0,
+    "flat_block": 0.583
+  },
+  "gb/face48": {
+    "spread": 1.0,
+    "white_deficit": 0.005,
+    "mde": 22.811,
+    "hue_worst": 16.009,
+    "neutral": 1.0,
+    "white_over": -0.005,
+    "eyes": 1.0,
+    "flat_block": 0.665
+  },
+  "gb/hero2x": {
+    "spread": 1.0,
+    "white_deficit": 0.0,
+    "mde": 26.807,
+    "hue_worst": 19.717,
+    "neutral": 0.5,
+    "white_over": 0.109,
+    "eyes": 0.5,
+    "flat_block": 0.121
+  },
+  "gb/item16": {
+    "spread": 0.262,
+    "white_deficit": 0.056,
+    "mde": 15.559,
+    "hue_worst": 21.208,
+    "neutral": 1.0,
+    "white_over": -0.056,
+    "eyes": 1.0,
+    "flat_block": 0.718
+  },
+  "gb/item2x": {
+    "spread": 1.0,
+    "white_deficit": 0.0,
+    "mde": 23.604,
+    "hue_worst": 14.602,
+    "neutral": 0.0,
+    "white_over": 0.431,
+    "eyes": 1.0,
+    "flat_block": 0.44
+  },
+  "gba/bug48": {
+    "spread": 0.787,
+    "white_deficit": 0.0,
+    "mde": 6.978,
+    "hue_worst": 5.719,
+    "neutral": 1.0,
+    "white_over": -0.005,
+    "eyes": 1.0,
+    "flat_block": 0.0
+  },
+  "gba/bug64": {
+    "spread": 0.426,
+    "white_deficit": 0.0,
+    "mde": 3.122,
+    "hue_worst": 6.34,
+    "neutral": 1.0,
+    "white_over": -0.003,
+    "eyes": 1.0,
+    "flat_block": 0.0
+  },
+  "gba/char64": {
+    "spread": 0.564,
+    "white_deficit": 0.0,
+    "mde": 1.644,
+    "hue_worst": 1.07,
+    "neutral": 0.0,
+    "white_over": 0.0,
+    "eyes": 1.0,
+    "flat_block": 0.0
+  },
+  "gba/enemy2x": {
+    "spread": 0.756,
+    "white_deficit": 0.0,
+    "mde": 6.277,
+    "hue_worst": 8.487,
+    "neutral": 0.5,
+    "white_over": -0.023,
+    "eyes": 1.0,
+    "flat_block": 0.0
+  },
+  "gba/face48": {
+    "spread": 0.743,
+    "white_deficit": 0.0,
+    "mde": 3.487,
+    "hue_worst": 1.55,
+    "neutral": 1.0,
+    "white_over": -0.005,
+    "eyes": 1.0,
+    "flat_block": 0.0
+  },
+  "gba/hero2x": {
+    "spread": 0.756,
+    "white_deficit": 0.0,
+    "mde": 9.894,
+    "hue_worst": 5.456,
+    "neutral": 0.5,
+    "white_over": -0.002,
+    "eyes": 1.0,
+    "flat_block": 0.019
+  },
+  "gba/item16": {
+    "spread": 0.128,
+    "white_deficit": 0.0,
+    "mde": 2.576,
+    "hue_worst": 1.06,
+    "neutral": 1.0,
+    "white_over": -0.056,
+    "eyes": 1.0,
+    "flat_block": 0.0
+  },
+  "gba/item2x": {
+    "spread": 0.72,
+    "white_deficit": 0.0,
+    "mde": 5.537,
+    "hue_worst": 8.769,
+    "neutral": 0.0,
+    "white_over": -0.0,
+    "eyes": 1.0,
+    "flat_block": 0.0
+  },
+  "gbc/bug48": {
+    "spread": 0.787,
+    "white_deficit": 0.0,
+    "mde": 8.816,
+    "hue_worst": 5.719,
+    "neutral": 1.0,
+    "white_over": -0.005,
+    "eyes": 1.0,
+    "flat_block": 0.063
+  },
+  "gbc/bug64": {
+    "spread": 0.426,
+    "white_deficit": 0.0,
+    "mde": 4.109,
+    "hue_worst": 6.34,
+    "neutral": 1.0,
+    "white_over": -0.003,
+    "eyes": 1.0,
+    "flat_block": 0.017
+  },
+  "gbc/char64": {
+    "spread": 0.564,
+    "white_deficit": 0.0,
+    "mde": 1.644,
+    "hue_worst": 1.07,
+    "neutral": 0.0,
+    "white_over": 0.0,
+    "eyes": 1.0,
+    "flat_block": 0.0
+  },
+  "gbc/enemy2x": {
+    "spread": 0.756,
+    "white_deficit": 0.0,
+    "mde": 10.555,
+    "hue_worst": 17.875,
+    "neutral": 0.5,
+    "white_over": -0.003,
+    "eyes": 1.0,
+    "flat_block": 0.007
+  },
+  "gbc/face48": {
+    "spread": 0.979,
+    "white_deficit": 0.0,
+    "mde": 9.195,
+    "hue_worst": 1.55,
+    "neutral": 1.0,
+    "white_over": -0.005,
+    "eyes": 1.0,
+    "flat_block": 0.021
+  },
+  "gbc/hero2x": {
+    "spread": 0.756,
+    "white_deficit": 0.0,
+    "mde": 13.26,
+    "hue_worst": 17.714,
+    "neutral": 0.5,
+    "white_over": 0.003,
+    "eyes": 1.0,
+    "flat_block": 0.019
+  },
+  "gbc/item16": {
+    "spread": 0.128,
+    "white_deficit": 0.0,
+    "mde": 2.576,
+    "hue_worst": 1.06,
+    "neutral": 1.0,
+    "white_over": -0.056,
+    "eyes": 1.0,
+    "flat_block": 0.0
+  },
+  "gbc/item2x": {
+    "spread": 0.629,
+    "white_deficit": 0.0,
+    "mde": 5.944,
+    "hue_worst": 11.401,
+    "neutral": 0.0,
+    "white_over": -0.0,
+    "eyes": 1.0,
+    "flat_block": 0.0
+  },
+  "gg/bug48": {
+    "spread": 0.759,
+    "white_deficit": 0.0,
+    "mde": 7.812,
+    "hue_worst": 4.576,
+    "neutral": 1.0,
+    "white_over": -0.005,
+    "eyes": 1.0,
+    "flat_block": 0.046
+  },
+  "gg/bug64": {
+    "spread": 0.413,
+    "white_deficit": 0.0,
+    "mde": 4.373,
+    "hue_worst": 5.18,
+    "neutral": 1.0,
+    "white_over": -0.003,
+    "eyes": 1.0,
+    "flat_block": 0.041
+  },
+  "gg/char64": {
+    "spread": 0.589,
+    "white_deficit": 0.0,
+    "mde": 3.105,
+    "hue_worst": 2.879,
+    "neutral": 0.0,
+    "white_over": 0.0,
+    "eyes": 1.0,
+    "flat_block": 0.0
+  },
+  "gg/enemy2x": {
+    "spread": 0.741,
+    "white_deficit": 0.0,
+    "mde": 7.064,
+    "hue_worst": 8.322,
+    "neutral": 0.5,
+    "white_over": -0.023,
+    "eyes": 1.0,
+    "flat_block": 0.076
+  },
+  "gg/face48": {
+    "spread": 0.725,
+    "white_deficit": 0.0,
+    "mde": 4.178,
+    "hue_worst": 1.826,
+    "neutral": 1.0,
+    "white_over": -0.005,
+    "eyes": 1.0,
+    "flat_block": 0.0
+  },
+  "gg/hero2x": {
+    "spread": 0.741,
+    "white_deficit": 0.0,
+    "mde": 10.696,
+    "hue_worst": 5.456,
+    "neutral": 0.5,
+    "white_over": -0.002,
+    "eyes": 1.0,
+    "flat_block": 0.048
+  },
+  "gg/item16": {
+    "spread": 0.095,
+    "white_deficit": 0.0,
+    "mde": 3.855,
+    "hue_worst": 2.675,
+    "neutral": 1.0,
+    "white_over": -0.056,
+    "eyes": 1.0,
+    "flat_block": 0.0
+  },
+  "gg/item2x": {
+    "spread": 0.723,
+    "white_deficit": 0.0,
+    "mde": 6.461,
+    "hue_worst": 8.769,
+    "neutral": 0.0,
+    "white_over": -0.0,
+    "eyes": 1.0,
+    "flat_block": 0.034
+  },
+  "md/bug48": {
+    "spread": 0.754,
+    "white_deficit": 0.0,
+    "mde": 9.728,
+    "hue_worst": 1.966,
+    "neutral": 1.0,
+    "white_over": -0.005,
+    "eyes": 1.0,
+    "flat_block": 0.0
+  },
+  "md/bug64": {
+    "spread": 0.428,
+    "white_deficit": 0.0,
+    "mde": 6.594,
+    "hue_worst": 2.402,
+    "neutral": 1.0,
+    "white_over": -0.003,
+    "eyes": 1.0,
+    "flat_block": 0.0
+  },
+  "md/char64": {
+    "spread": 0.546,
+    "white_deficit": 0.0,
+    "mde": 4.833,
+    "hue_worst": 5.7,
+    "neutral": 0.0,
+    "white_over": 0.0,
+    "eyes": 1.0,
+    "flat_block": 0.0
+  },
+  "md/enemy2x": {
+    "spread": 0.645,
+    "white_deficit": 0.0,
+    "mde": 7.523,
+    "hue_worst": 8.322,
+    "neutral": 0.5,
+    "white_over": -0.023,
+    "eyes": 1.0,
+    "flat_block": 0.076
+  },
+  "md/face48": {
+    "spread": 0.662,
+    "white_deficit": 0.0,
+    "mde": 5.888,
+    "hue_worst": 4.124,
+    "neutral": 1.0,
+    "white_over": -0.005,
+    "eyes": 1.0,
+    "flat_block": 0.0
+  },
+  "md/hero2x": {
+    "spread": 0.645,
+    "white_deficit": 0.0,
+    "mde": 10.238,
+    "hue_worst": 6.796,
+    "neutral": 0.5,
+    "white_over": -0.002,
+    "eyes": 1.0,
+    "flat_block": 0.048
+  },
+  "md/item16": {
+    "spread": 0.095,
+    "white_deficit": 0.0,
+    "mde": 7.102,
+    "hue_worst": 5.329,
+    "neutral": 1.0,
+    "white_over": -0.056,
+    "eyes": 1.0,
+    "flat_block": 0.0
+  },
+  "md/item2x": {
+    "spread": 0.63,
+    "white_deficit": 0.0,
+    "mde": 6.243,
+    "hue_worst": 8.724,
+    "neutral": 0.0,
+    "white_over": -0.0,
+    "eyes": 1.0,
+    "flat_block": 0.034
+  },
+  "nes/bug48": {
+    "spread": 0.65,
+    "white_deficit": 0.0,
+    "mde": 9.834,
+    "hue_worst": 7.576,
+    "neutral": 0.5,
+    "white_over": -0.005,
+    "eyes": 1.0,
+    "flat_block": 0.063
+  },
+  "nes/bug64": {
+    "spread": 0.297,
+    "white_deficit": 0.0,
+    "mde": 6.921,
+    "hue_worst": 8.141,
+    "neutral": 1.0,
+    "white_over": -0.003,
+    "eyes": 1.0,
+    "flat_block": 0.053
+  },
+  "nes/char64": {
+    "spread": 0.536,
+    "white_deficit": 0.0,
+    "mde": 4.421,
+    "hue_worst": 6.61,
+    "neutral": 0.0,
+    "white_over": 0.0,
+    "eyes": 1.0,
+    "flat_block": 0.0
+  },
+  "nes/enemy2x": {
+    "spread": 0.631,
+    "white_deficit": 0.0,
+    "mde": 13.461,
+    "hue_worst": 17.875,
+    "neutral": 0.5,
+    "white_over": -0.016,
+    "eyes": 1.0,
+    "flat_block": 0.076
+  },
+  "nes/face48": {
+    "spread": 0.991,
+    "white_deficit": 0.0,
+    "mde": 14.412,
+    "hue_worst": 7.599,
+    "neutral": 1.0,
+    "white_over": -0.005,
+    "eyes": 1.0,
+    "flat_block": 0.023
+  },
+  "nes/hero2x": {
+    "spread": 0.631,
+    "white_deficit": 0.0,
+    "mde": 12.854,
+    "hue_worst": 10.551,
+    "neutral": 0.5,
+    "white_over": -0.002,
+    "eyes": 1.0,
+    "flat_block": 0.024
+  },
+  "nes/item16": {
+    "spread": 0.171,
+    "white_deficit": 0.0,
+    "mde": 4.479,
+    "hue_worst": 4.16,
+    "neutral": 1.0,
+    "white_over": -0.056,
+    "eyes": 1.0,
+    "flat_block": 0.0
+  },
+  "nes/item2x": {
+    "spread": 0.471,
+    "white_deficit": 0.0,
+    "mde": 6.69,
+    "hue_worst": 11.402,
+    "neutral": 0.0,
+    "white_over": -0.0,
+    "eyes": 1.0,
+    "flat_block": 0.034
+  },
+  "pce/bug48": {
+    "spread": 0.754,
+    "white_deficit": 0.0,
+    "mde": 9.728,
+    "hue_worst": 1.966,
+    "neutral": 1.0,
+    "white_over": -0.005,
+    "eyes": 1.0,
+    "flat_block": 0.0
+  },
+  "pce/bug64": {
+    "spread": 0.428,
+    "white_deficit": 0.0,
+    "mde": 6.594,
+    "hue_worst": 2.402,
+    "neutral": 1.0,
+    "white_over": -0.003,
+    "eyes": 1.0,
+    "flat_block": 0.0
+  },
+  "pce/char64": {
+    "spread": 0.546,
+    "white_deficit": 0.0,
+    "mde": 4.833,
+    "hue_worst": 5.7,
+    "neutral": 0.0,
+    "white_over": 0.0,
+    "eyes": 1.0,
+    "flat_block": 0.0
+  },
+  "pce/enemy2x": {
+    "spread": 0.645,
+    "white_deficit": 0.0,
+    "mde": 7.523,
+    "hue_worst": 8.322,
+    "neutral": 0.5,
+    "white_over": -0.023,
+    "eyes": 1.0,
+    "flat_block": 0.076
+  },
+  "pce/face48": {
+    "spread": 0.662,
+    "white_deficit": 0.0,
+    "mde": 5.888,
+    "hue_worst": 4.124,
+    "neutral": 1.0,
+    "white_over": -0.005,
+    "eyes": 1.0,
+    "flat_block": 0.0
+  },
+  "pce/hero2x": {
+    "spread": 0.645,
+    "white_deficit": 0.0,
+    "mde": 10.238,
+    "hue_worst": 6.796,
+    "neutral": 0.5,
+    "white_over": -0.002,
+    "eyes": 1.0,
+    "flat_block": 0.048
+  },
+  "pce/item16": {
+    "spread": 0.095,
+    "white_deficit": 0.0,
+    "mde": 7.102,
+    "hue_worst": 5.329,
+    "neutral": 1.0,
+    "white_over": -0.056,
+    "eyes": 1.0,
+    "flat_block": 0.0
+  },
+  "pce/item2x": {
+    "spread": 0.63,
+    "white_deficit": 0.0,
+    "mde": 6.243,
+    "hue_worst": 8.724,
+    "neutral": 0.0,
+    "white_over": -0.0,
+    "eyes": 1.0,
+    "flat_block": 0.034
+  },
+  "sms/bug48": {
+    "spread": 0.575,
+    "white_deficit": 0.0,
+    "mde": 13.132,
+    "hue_worst": 6.967,
+    "neutral": 0.5,
+    "white_over": 0.0,
+    "eyes": 1.0,
+    "flat_block": 0.0
+  },
+  "sms/bug64": {
+    "spread": 0.321,
+    "white_deficit": 0.0,
+    "mde": 10.165,
+    "hue_worst": 6.677,
+    "neutral": 0.0,
+    "white_over": 0.0,
+    "eyes": 1.0,
+    "flat_block": 0.0
+  },
+  "sms/char64": {
+    "spread": 0.448,
+    "white_deficit": 0.0,
+    "mde": 9.03,
+    "hue_worst": 10.718,
+    "neutral": 0.0,
+    "white_over": 0.0,
+    "eyes": 1.0,
+    "flat_block": 0.286
+  },
+  "sms/enemy2x": {
+    "spread": 0.64,
+    "white_deficit": 0.0,
+    "mde": 12.35,
+    "hue_worst": 10.845,
+    "neutral": 0.5,
+    "white_over": 0.0,
+    "eyes": 1.0,
+    "flat_block": 0.076
+  },
+  "sms/face48": {
+    "spread": 0.64,
+    "white_deficit": 0.0,
+    "mde": 8.539,
+    "hue_worst": 4.124,
+    "neutral": 1.0,
+    "white_over": 0.0,
+    "eyes": 1.0,
+    "flat_block": 0.0
+  },
+  "sms/hero2x": {
+    "spread": 0.64,
+    "white_deficit": 0.0,
+    "mde": 14.931,
+    "hue_worst": 9.749,
+    "neutral": 0.5,
+    "white_over": 0.0,
+    "eyes": 0.5,
+    "flat_block": 0.053
+  },
+  "sms/item16": {
+    "spread": 0.023,
+    "white_deficit": 0.0,
+    "mde": 12.759,
+    "hue_worst": 9.755,
+    "neutral": 1.0,
+    "white_over": 0.0,
+    "eyes": 1.0,
+    "flat_block": 0.0
+  },
+  "sms/item2x": {
+    "spread": 0.625,
+    "white_deficit": 0.0,
+    "mde": 10.627,
+    "hue_worst": 15.804,
+    "neutral": 0.0,
+    "white_over": 0.0,
+    "eyes": 1.0,
+    "flat_block": 0.034
+  },
+  "snes/bug48": {
+    "spread": 0.787,
+    "white_deficit": 0.0,
+    "mde": 6.978,
+    "hue_worst": 5.719,
+    "neutral": 1.0,
+    "white_over": -0.005,
+    "eyes": 1.0,
+    "flat_block": 0.0
+  },
+  "snes/bug64": {
+    "spread": 0.426,
+    "white_deficit": 0.0,
+    "mde": 3.122,
+    "hue_worst": 6.34,
+    "neutral": 1.0,
+    "white_over": -0.003,
+    "eyes": 1.0,
+    "flat_block": 0.0
+  },
+  "snes/char64": {
+    "spread": 0.564,
+    "white_deficit": 0.0,
+    "mde": 1.644,
+    "hue_worst": 1.07,
+    "neutral": 0.0,
+    "white_over": 0.0,
+    "eyes": 1.0,
+    "flat_block": 0.0
+  },
+  "snes/enemy2x": {
+    "spread": 0.756,
+    "white_deficit": 0.0,
+    "mde": 6.277,
+    "hue_worst": 8.487,
+    "neutral": 0.5,
+    "white_over": -0.023,
+    "eyes": 1.0,
+    "flat_block": 0.0
+  },
+  "snes/face48": {
+    "spread": 0.743,
+    "white_deficit": 0.0,
+    "mde": 3.487,
+    "hue_worst": 1.55,
+    "neutral": 1.0,
+    "white_over": -0.005,
+    "eyes": 1.0,
+    "flat_block": 0.0
+  },
+  "snes/hero2x": {
+    "spread": 0.756,
+    "white_deficit": 0.0,
+    "mde": 9.894,
+    "hue_worst": 5.456,
+    "neutral": 0.5,
+    "white_over": -0.002,
+    "eyes": 1.0,
+    "flat_block": 0.019
+  },
+  "snes/item16": {
+    "spread": 0.128,
+    "white_deficit": 0.0,
+    "mde": 2.576,
+    "hue_worst": 1.06,
+    "neutral": 1.0,
+    "white_over": -0.056,
+    "eyes": 1.0,
+    "flat_block": 0.0
+  },
+  "snes/item2x": {
+    "spread": 0.72,
+    "white_deficit": 0.0,
+    "mde": 5.537,
+    "hue_worst": 8.769,
+    "neutral": 0.0,
+    "white_over": -0.0,
+    "eyes": 1.0,
+    "flat_block": 0.0
+  }
+}

@@ -1,0 +1,42 @@
+# Sega Master System. A project may override any key from disk.
+colour_bits = 2
+channel_step = 64
+export_palette = "sms"
+
+tile = [8, 8]
+hw_cell = [8, 16]        # 8x8 or 8x16 (VDP register 1), one size for all sprites
+hw_cells_max = 64        # SAT: 64 sprites
+hw_cells_per_row_max = 8 # 8 sprites per scanline
+palettes = 2             # two 16-colour palettes; a BG tile picks either
+obj_palettes = 1         # sprites always use the second palette; entry 0 is transparent
+colors = 15
+colors_per_tile = 16
+vram_banks = 1
+vram_tiles_per_bank = 448 # 16 KB minus the 0x700-byte name table and the 0x100-byte sprite table = 14336 bytes / 32 (derived)
+obj_tiles_max = 256       # sprites use the first or the second 256 tiles
+bg_tiles_max = 448
+sprite_cells = 128        # 256 tiles / 2 (8x16 cells): a ceiling; streaming budgets are not modelled (R6)
+window_tiles = 0
+dma_bytes_per_frame = 0   # not modelled
+vram_share = false
+dedupe_flips = true       # BG tiles have flip bits
+sheet_width = 128
+
+[style]
+# design-language hints read by skills, the automatic first version and the quality harness; a project [style] overrides them
+white = "highlights"
+outline = "darkest"
+min_value_spread = 0.5
+value_map = "colour"
+reason = "SMS has 2 bits per channel; its colours are coarse and the white is dim, so keep white for highlights and let the hues separate materials."
+
+[console]
+name = "Sega Master System"
+short = "SMS"
+screen = [256, 192]
+preview_bg = "#000000"
+colour = "64 colours, 2 bits per channel (%00BBGGRR); values 0, 85, 170, 255 are written as 0, 64, 128, 192"
+palettes = "2 palettes of 16 colours: BG (CRAM 0-15) and sprites (CRAM 16-31); a BG tile may use either; sprite entry 0 is transparent"
+oam = "64 sprites per frame, 8 per scanline, 8x8 or 8x16 (one size for all)"
+vram = "16 KB = 512 tile slots of 32 bytes; about 448 for artwork after the name table and sprite table"
+references = ["SMS Power Palette (smspower.org/Development/Palette): 2 bits per channel packed %00BBGGRR, 64 colours, CRAM 32 bytes = BG palette (16) + sprite palette (16), sprite palette entry 0 transparent", "SMS Power VDP registers (smspower.org/Development/VDPRegisters): 64 sprites in the SAT, tall (8x16) sprites bit, 192-line mode 4", "8 sprites per scanline: devkitSMS wiki (github.com/sverx/devkitSMS/wiki), which points to SMS Power; 512 tile slots = 16 KB of VRAM at 32 bytes per 4bpp tile (arithmetic); the 448 artwork tiles are derived from the 0x700-byte name table and 0x100-byte SAT, not quoted from a page"]

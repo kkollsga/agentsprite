@@ -1,0 +1,6 @@
+# GBA background tiles (image mode "tile"). Inherits console.toml.
+transparent = false
+unique_tiles_max = 1024
+
+[mode]
+description = "BG tile sets: 8x8 tiles, colours per tile and tile budget of the console"

@@ -1,0 +1,12 @@
+{
+  "name": "agentsprite",
+  "description": "Agent skills for the pxl pixel-art tool",
+  "owner": { "name": "kkollsga" },
+  "plugins": [
+    {
+      "name": "agentsprite",
+      "source": "./",
+      "description": "pxl skills: pxl-operator, pxl-extract, pxl-sprite, pxl-tiles, pxl-review, pxl-coordinate"
+    }
+  ]
+}
